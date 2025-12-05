@@ -9,54 +9,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #B8860B;
-            --gold-light: #D4AF37;
-            --gold-dark: #8B6914;
-            --gold-glow: rgba(212, 175, 55, 0.3);
-            --champagne: #F7E7CE;
-            --cream: #FDF5E6;
             --burgundy: #722F37;
-            --burgundy-dark: #4A1C23;
+            --burgundy-light: #8B3A44;
+            --burgundy-dark: #5A252C;
+            --burgundy-glow: rgba(114, 47, 55, 0.4);
+            --rose: #C9A0A0;
+            --rose-light: #D4B5B5;
+            --gold: #D4AF37;
+            --cream: #FDF5E6;
+            --champagne: #F7E7CE;
             --noir: #0A0A0A;
             --velvet: #121212;
-            --smoke: #1E1E1E;
-            --text-muted: #9A8F80;
+            --smoke: #1A1A1A;
+            --slate: #2A2A2A;
+            --text-muted: #888;
         }
-
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background: var(--noir); 
-            color: var(--cream); 
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--noir);
+            color: var(--cream);
             line-height: 1.7;
         }
-
-        /* Subtle grain */
+        
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.02;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            opacity: 0.03;
             pointer-events: none;
             z-index: 1000;
         }
-
+        
         /* Header */
         .header {
-            background: transparent;
-            padding: 1.5rem 2rem;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--burgundy-dark);
             z-index: 100;
         }
-
+        
         .header-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -64,53 +62,96 @@
             align-items: center;
             justify-content: space-between;
         }
-
-        .logo-section {
+        
+        .logo {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-        }
-
-        .logo {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
-            border-radius: 6px;
-            box-shadow: 0 0 20px var(--gold-glow);
-        }
-
-        .logo-text {
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--cream);
-            font-size: 1.5rem;
-            font-weight: 400;
-            letter-spacing: 0.1em;
-        }
-
-        .logo-sub {
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-        }
-
-        .header-cta {
-            padding: 0.6rem 1.25rem;
-            background: transparent;
-            border: 1px solid var(--gold-dark);
-            border-radius: 4px;
-            color: var(--gold-light);
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: all 0.3s;
             text-decoration: none;
         }
-
-        .header-cta:hover {
-            background: rgba(212,175,55,0.1);
-            border-color: var(--gold);
+        
+        .logo-mark {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, var(--burgundy-dark) 0%, var(--burgundy-light) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--cream);
+            font-size: 1rem;
+            box-shadow: 0 0 20px var(--burgundy-glow);
         }
-
+        
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--cream);
+        }
+        
+        .logo-text span {
+            color: var(--rose);
+        }
+        
+        .nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .nav a {
+            padding: 0.5rem 1rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            border-radius: 6px;
+        }
+        
+        .nav a:hover { color: var(--cream); }
+        
+        .nav-cta {
+            background: linear-gradient(135deg, var(--burgundy-dark) 0%, var(--burgundy) 100%) !important;
+            color: var(--cream) !important;
+            box-shadow: 0 0 20px var(--burgundy-glow);
+        }
+        
+        /* Geometric decorations */
+        .geo-circle {
+            position: absolute;
+            border: 1px solid var(--burgundy);
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+        
+        .geo-square {
+            position: absolute;
+            border: 1px solid var(--rose);
+            opacity: 0.3;
+        }
+        
+        .geo-corner {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            opacity: 0.5;
+        }
+        
+        .geo-corner::before,
+        .geo-corner::after {
+            content: '';
+            position: absolute;
+            background: var(--burgundy);
+        }
+        
+        .geo-corner.tl::before { top: 0; left: 0; width: 100%; height: 1px; }
+        .geo-corner.tl::after { top: 0; left: 0; width: 1px; height: 100%; }
+        .geo-corner.tr::before { top: 0; right: 0; width: 100%; height: 1px; }
+        .geo-corner.tr::after { top: 0; right: 0; width: 1px; height: 100%; }
+        .geo-corner.bl::before { bottom: 0; left: 0; width: 100%; height: 1px; }
+        .geo-corner.bl::after { bottom: 0; left: 0; width: 1px; height: 100%; }
+        .geo-corner.br::before { bottom: 0; right: 0; width: 100%; height: 1px; }
+        .geo-corner.br::after { bottom: 0; right: 0; width: 1px; height: 100%; }
+        
         /* Hero */
         .hero {
             min-height: 100vh;
@@ -120,678 +161,724 @@
             text-align: center;
             padding: 8rem 2rem 6rem;
             position: relative;
-            background: linear-gradient(180deg, var(--noir) 0%, var(--velvet) 50%, var(--burgundy-dark) 100%);
+            background: radial-gradient(ellipse at center, rgba(114, 47, 55, 0.15) 0%, transparent 60%);
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at center top, rgba(212,175,55,0.1) 0%, transparent 60%);
-        }
-
+        
         .hero::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             height: 200px;
             background: linear-gradient(to top, var(--noir) 0%, transparent 100%);
         }
-
+        
+        .hero .geo-circle.c1 { width: 400px; height: 400px; top: 10%; left: -100px; }
+        .hero .geo-circle.c2 { width: 200px; height: 200px; bottom: 20%; right: 5%; }
+        .hero .geo-square.s1 { width: 150px; height: 150px; top: 15%; right: 10%; transform: rotate(15deg); }
+        .hero .geo-square.s2 { width: 80px; height: 80px; bottom: 30%; left: 10%; transform: rotate(-10deg); }
+        
         .hero-content {
             position: relative;
             z-index: 1;
             max-width: 800px;
         }
-
+        
         .hero-icon {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            opacity: 0.8;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
         }
-
+        
         .hero-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(2.5rem, 7vw, 4rem);
             font-weight: 300;
             color: var(--cream);
-            margin-bottom: 1.5rem;
             line-height: 1.2;
+            margin-bottom: 1.5rem;
         }
-
+        
+        .hero-title em {
+            color: var(--rose);
+            font-style: italic;
+        }
+        
         .hero-subtitle {
             font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 600px;
+            color: var(--champagne);
+            max-width: 650px;
             margin: 0 auto 2.5rem;
-            font-weight: 300;
             line-height: 1.8;
         }
-
-        .hero-cta {
+        
+        .btn-primary {
             display: inline-block;
             padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            background: linear-gradient(135deg, var(--burgundy-dark) 0%, var(--burgundy) 100%);
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
+            color: var(--cream);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 0 30px var(--burgundy-glow);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 40px var(--burgundy-glow);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--rose);
+            margin-bottom: 0.75rem;
+        }
+        
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            font-weight: 300;
+            color: var(--cream);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* What We Preserve */
+        .preserve-section {
+            background: linear-gradient(180deg, var(--noir) 0%, var(--velvet) 100%);
+        }
+        
+        .preserve-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .preserve-card {
+            background: var(--smoke);
+            border: 1px solid var(--slate);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .preserve-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--burgundy);
+        }
+        
+        .preserve-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--burgundy);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px var(--burgundy-glow);
+        }
+        
+        .preserve-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .preserve-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+        
+        .preserve-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        
+        /* How It Works */
+        .howit-section {
+            background: var(--velvet);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .howit-section .geo-circle.c1 { width: 300px; height: 300px; top: -50px; right: -100px; }
+        .howit-section .geo-square.s1 { width: 120px; height: 120px; bottom: 10%; left: 5%; transform: rotate(20deg); }
+        
+        .howit-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        .howit-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .howit-number {
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, var(--burgundy-dark) 0%, var(--burgundy) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 0 20px var(--burgundy-glow);
+        }
+        
+        .howit-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+        
+        .howit-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        
+        /* Packages */
+        .packages-section {
+            background: linear-gradient(180deg, var(--velvet) 0%, var(--noir) 100%);
+            position: relative;
+        }
+        
+        .packages-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(114, 47, 55, 0.1) 0%, transparent 60%);
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            position: relative;
+        }
+        
+        .package-card {
+            background: var(--smoke);
+            border: 1px solid var(--slate);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at top, rgba(255,255,255,0.02) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--burgundy);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4), 0 0 40px var(--burgundy-glow);
+        }
+        
+        .package-card.featured {
+            border-color: var(--burgundy);
+            background: linear-gradient(180deg, var(--smoke) 0%, var(--burgundy-dark) 100%);
+        }
+        
+        .package-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--rose);
             color: var(--noir);
-            font-size: 1rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-radius: 50px;
+        }
+        
+        .package-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+        
+        .package-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        
+        .package-price {
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 0.25rem;
+        }
+        
+        .package-period {
+            font-size: 0.8rem;
+            color: var(--rose);
+            margin-bottom: 2rem;
+        }
+        
+        .package-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        
+        .package-features li {
+            padding: 0.5rem 0;
+            font-size: 0.85rem;
+            color: var(--champagne);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        
+        .package-features li::before {
+            content: '✓';
+            color: var(--rose);
+            font-weight: 600;
+        }
+        
+        .package-btn {
+            display: block;
+            width: 100%;
+            padding: 0.875rem;
+            background: linear-gradient(135deg, var(--burgundy-dark) 0%, var(--burgundy) 100%);
+            border: none;
+            border-radius: 8px;
+            color: var(--cream);
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
         }
-
-        .hero-cta:hover {
-            box-shadow: 0 0 40px var(--gold-glow);
-            transform: translateY(-2px);
+        
+        .package-btn:hover {
+            box-shadow: 0 0 30px var(--burgundy-glow);
         }
-
-        /* Section styles */
-        section {
-            padding: 6rem 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-size: 0.7rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--gold-light);
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 300;
-            color: var(--cream);
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            font-size: 1rem;
-            color: var(--text-muted);
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 4rem;
-            font-weight: 300;
-        }
-
-        /* What We Preserve */
-        .preserve-section {
-            background: var(--velvet);
-        }
-
-        .preserve-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .preserve-card {
-            background: linear-gradient(135deg, var(--smoke) 0%, var(--noir) 100%);
-            border: 1px solid var(--gold-dark);
-            border-radius: 12px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .preserve-card:hover {
-            border-color: var(--gold);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.3), 0 0 30px var(--gold-glow);
-            transform: translateY(-4px);
-        }
-
-        .preserve-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .preserve-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            color: var(--champagne);
-            margin-bottom: 0.75rem;
-        }
-
-        .preserve-text {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-        }
-
-        /* How It Works */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            position: relative;
-        }
-
-        .steps-grid::before {
-            content: '';
-            position: absolute;
-            top: 2.5rem;
-            left: 10%;
-            right: 10%;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold-dark), var(--gold), var(--gold-dark), transparent);
-            z-index: 0;
-        }
-
-        .step {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: var(--noir);
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            color: var(--gold-light);
-        }
-
-        .step-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.25rem;
-            color: var(--champagne);
-            margin-bottom: 0.5rem;
-        }
-
-        .step-text {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* Packages */
-        .packages-section {
-            background: linear-gradient(180deg, var(--noir) 0%, var(--velvet) 50%, var(--burgundy-dark) 100%);
-        }
-
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .package {
-            background: linear-gradient(180deg, var(--velvet) 0%, var(--smoke) 100%);
-            border: 1px solid var(--gold-dark);
-            border-radius: 16px;
-            padding: 2.5rem;
-            position: relative;
-            transition: all 0.3s;
-        }
-
-        .package:hover {
-            border-color: var(--gold);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px var(--gold-glow);
-        }
-
-        .package.featured {
-            border: 2px solid var(--gold);
-            transform: scale(1.02);
-        }
-
-        .package-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
-            color: var(--noir);
-            padding: 0.25rem 1rem;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .package-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.75rem;
-            color: var(--champagne);
-            margin-bottom: 0.5rem;
-        }
-
-        .package-desc {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .package-price {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            color: var(--gold-light);
-            margin-bottom: 0.25rem;
-        }
-
-        .package-price-note {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .package-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .package-features li {
-            padding: 0.6rem 0;
-            font-size: 0.9rem;
-            color: var(--cream);
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-        }
-
-        .package-features li::before {
-            content: '✓';
-            color: var(--gold-light);
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        .package-cta {
-            width: 100%;
-            padding: 0.875rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .package-cta.primary {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            border: none;
-            color: var(--noir);
-        }
-
-        .package-cta.primary:hover {
-            box-shadow: 0 0 30px var(--gold-glow);
-        }
-
-        .package-cta.secondary {
+        
+        .package-btn.outline {
             background: transparent;
-            border: 1px solid var(--gold-dark);
-            color: var(--gold-light);
+            border: 1px solid var(--burgundy);
         }
-
-        .package-cta.secondary:hover {
-            background: rgba(212,175,55,0.1);
-            border-color: var(--gold);
-        }
-
-        /* Features Highlight */
+        
+        /* Special Features */
         .features-section {
             background: var(--noir);
+            position: relative;
         }
-
+        
+        .features-section .geo-circle.c1 { width: 250px; height: 250px; top: 10%; left: -80px; }
+        .features-section .geo-circle.c2 { width: 180px; height: 180px; bottom: 15%; right: 5%; }
+        
         .features-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
+            gap: 2rem;
         }
-
-        .feature {
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
+        
+        .feature-card {
+            background: var(--velvet);
+            border: 1px solid var(--slate);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--burgundy);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--burgundy);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4), 0 0 25px var(--burgundy-glow);
+        }
+        
         .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--velvet) 0%, var(--smoke) 100%);
-            border: 1px solid var(--gold-dark);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
-
-        .feature-content {
-            flex: 1;
-        }
-
-        .feature-title {
+        
+        .feature-name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.25rem;
-            color: var(--champagne);
-            margin-bottom: 0.5rem;
+            font-size: 1.35rem;
+            color: var(--cream);
+            margin-bottom: 0.75rem;
         }
-
-        .feature-text {
+        
+        .feature-desc {
             font-size: 0.9rem;
             color: var(--text-muted);
-            line-height: 1.7;
-        }
-
-        /* Quote */
-        .quote-section {
-            background: linear-gradient(135deg, var(--velvet) 0%, var(--burgundy-dark) 100%);
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .quote-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.5rem, 3vw, 2.25rem);
-            font-style: italic;
-            color: var(--champagne);
-            max-width: 800px;
-            margin: 0 auto 1.5rem;
             line-height: 1.6;
         }
-
-        .quote-author {
-            font-size: 0.9rem;
-            color: var(--gold-light);
-            letter-spacing: 0.1em;
+        
+        /* Quote */
+        .quote-section {
+            background: var(--velvet);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
         }
-
+        
+        .quote-section .geo-circle.c1 { width: 200px; height: 200px; top: 10%; left: 5%; }
+        .quote-section .geo-circle.c2 { width: 150px; height: 150px; bottom: 10%; right: 10%; }
+        
+        .quote-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-style: italic;
+            color: var(--cream);
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .quote-attr {
+            font-size: 0.85rem;
+            color: var(--rose);
+        }
+        
         /* Partners */
         .partners-section {
-            background: var(--velvet);
+            background: linear-gradient(180deg, var(--velvet) 0%, var(--noir) 100%);
         }
-
-        .partners-content {
+        
+        .partners-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 3rem;
             align-items: center;
         }
-
-        .partners-text h3 {
+        
+        .partners-content h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
-            color: var(--champagne);
-            margin-bottom: 1.5rem;
+            color: var(--cream);
+            margin-bottom: 1rem;
         }
-
-        .partners-text p {
-            color: var(--text-muted);
+        
+        .partners-content p {
+            color: var(--champagne);
             margin-bottom: 1rem;
             line-height: 1.8;
         }
-
+        
         .partners-list {
             list-style: none;
             margin: 1.5rem 0;
         }
-
+        
         .partners-list li {
             padding: 0.5rem 0;
             color: var(--cream);
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
         }
-
+        
         .partners-list li::before {
-            content: '→';
-            color: var(--gold-light);
+            content: '✓';
+            color: var(--rose);
+            font-weight: 600;
         }
-
-        .partners-cta {
+        
+        .btn-secondary {
             display: inline-block;
-            margin-top: 1rem;
             padding: 0.875rem 2rem;
             background: transparent;
-            border: 1px solid var(--gold-dark);
-            border-radius: 4px;
-            color: var(--gold-light);
+            border: 1px solid var(--burgundy);
+            border-radius: 6px;
+            color: var(--cream);
             font-size: 0.9rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
         }
-
-        .partners-cta:hover {
-            background: rgba(212,175,55,0.1);
-            border-color: var(--gold);
+        
+        .btn-secondary:hover {
+            background: var(--burgundy);
+            box-shadow: 0 0 20px var(--burgundy-glow);
         }
-
-        .partners-visual {
-            background: linear-gradient(135deg, var(--smoke) 0%, var(--noir) 100%);
-            border: 1px solid var(--gold-dark);
+        
+        /* Visual frame */
+        .visual-frame {
+            position: relative;
+            padding: 2rem;
+        }
+        
+        .visual-frame .geo-corner.tl { top: 0; left: 0; }
+        .visual-frame .geo-corner.tr { top: 0; right: 0; }
+        .visual-frame .geo-corner.bl { bottom: 0; left: 0; }
+        .visual-frame .geo-corner.br { bottom: 0; right: 0; }
+        
+        .partners-visual-card {
+            background: var(--smoke);
+            border: 1px solid var(--slate);
             border-radius: 16px;
-            padding: 3rem;
+            padding: 2.5rem;
             text-align: center;
         }
-
+        
         .partners-visual-icon {
             font-size: 4rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .partners-visual-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            color: var(--champagne);
-            margin-bottom: 0.5rem;
-        }
-
-        .partners-visual-text {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--noir);
-            border-top: 1px solid var(--gold-dark);
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            color: var(--gold-light);
             margin-bottom: 1rem;
         }
-
-        .footer-text {
+        
+        .partners-visual-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: var(--champagne);
+            font-style: italic;
+        }
+        
+        /* CTA */
+        .cta-section {
+            background: var(--noir);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--cream);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-subtitle {
             color: var(--text-muted);
-            font-size: 0.875rem;
             margin-bottom: 2rem;
         }
-
+        
+        /* Footer */
+        .footer {
+            background: var(--velvet);
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--burgundy-dark);
+        }
+        
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: var(--cream);
+        }
+        
+        .footer-brand span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 0.25rem;
+        }
+        
         .footer-links {
             display: flex;
-            justify-content: center;
             gap: 2rem;
-            margin-bottom: 2rem;
         }
-
+        
         .footer-links a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             transition: color 0.3s;
         }
-
+        
         .footer-links a:hover {
-            color: var(--gold-light);
+            color: var(--rose);
         }
-
-        .footer-bottom {
+        
+        .footer-copy {
             font-size: 0.75rem;
             color: var(--text-muted);
-            opacity: 0.7;
         }
-
+        
         /* Responsive */
-        @media (max-width: 1024px) {
-            .preserve-grid,
-            .packages-grid {
-                grid-template-columns: 1fr;
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            .steps-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 3rem;
-            }
-
-            .steps-grid::before {
-                display: none;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .partners-content {
-                grid-template-columns: 1fr;
-            }
-
-            .package.featured {
-                transform: none;
-            }
+        @media (max-width: 1000px) {
+            .preserve-grid { grid-template-columns: repeat(2, 1fr); }
+            .howit-grid { grid-template-columns: repeat(2, 1fr); }
+            .packages-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .partners-grid { grid-template-columns: 1fr; }
         }
-
-        @media (max-width: 640px) {
-            .steps-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .header-cta {
-                display: none;
-            }
+        
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; gap: 1rem; }
+            .nav { flex-wrap: wrap; justify-content: center; }
+            .preserve-grid { grid-template-columns: 1fr; }
+            .howit-grid { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; gap: 1.5rem; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <div class="logo-section">
-                <div class="logo"></div>
-                <div>
-                    <div class="logo-text">NextHeir</div>
-                    <div class="logo-sub">Memorial</div>
-                </div>
-            </div>
-            <a href="#packages" class="header-cta">View Packages</a>
+            <a href="#" class="logo">
+                <div class="logo-mark">N</div>
+                <div class="logo-text">NextHeir <span>Memorial</span></div>
+            </a>
+            <nav class="nav">
+                <a href="#preserve">What We Preserve</a>
+                <a href="#packages">Packages</a>
+                <a href="#features">Features</a>
+                <a href="#packages" class="nav-cta">Create Memorial</a>
+            </nav>
         </div>
     </header>
-
-    <!-- Hero -->
+    
     <section class="hero">
+        <div class="geo-circle c1"></div>
+        <div class="geo-circle c2"></div>
+        <div class="geo-square s1"></div>
+        <div class="geo-square s2"></div>
+        
         <div class="hero-content">
             <div class="hero-icon">🕯️</div>
-            <h1 class="hero-title">Their Story Doesn't End.<br>It's Preserved.</h1>
-            <p class="hero-subtitle">
-                When someone we love passes, we don't just lose them — we risk losing their voice, their stories, the small things that made them who they were. NextHeir Memorial ensures their legacy lives on, accessible to every generation that follows.
-            </p>
-            <a href="#packages" class="hero-cta">Create a Memorial</a>
+            <h1 class="hero-title">Their Story Doesn't End. <em>It's Preserved.</em></h1>
+            <p class="hero-subtitle">When someone we love passes, we don't just lose them — we risk losing their voice, their stories, the small things that made them who they were. NextHeir Memorial ensures their legacy lives on, accessible to every generation that follows.</p>
+            <a href="#packages" class="btn-primary">Create a Memorial</a>
         </div>
     </section>
-
-    <!-- What We Preserve -->
-    <section class="preserve-section">
+    
+    <section class="section preserve-section" id="preserve">
         <div class="container">
-            <p class="section-label">What We Preserve</p>
-            <h2 class="section-title">More Than Memories</h2>
-            <p class="section-subtitle">A complete record of a life — the objects, the stories, the voice.</p>
-
+            <div class="section-header">
+                <p class="section-label">What We Preserve</p>
+                <h2 class="section-title">More Than Memories</h2>
+                <p class="section-subtitle">A complete record of a life — the objects, the stories, the voice.</p>
+            </div>
+            
             <div class="preserve-grid">
                 <div class="preserve-card">
                     <div class="preserve-icon">👞</div>
-                    <h3 class="preserve-title">Their Belongings</h3>
-                    <p class="preserve-text">The watch, the ring, the shoes they wore. Each heirloom documented with photos, provenance, and the story of why it mattered.</p>
+                    <h3 class="preserve-name">Their Belongings</h3>
+                    <p class="preserve-desc">The watch, the ring, the shoes they wore. Each heirloom documented with photos, provenance, and the story of why it mattered.</p>
                 </div>
                 <div class="preserve-card">
                     <div class="preserve-icon">💬</div>
-                    <h3 class="preserve-title">Their Stories</h3>
-                    <p class="preserve-text">The tales they told, the wisdom they shared, the moments that defined them — captured in text, video, and audio for generations.</p>
+                    <h3 class="preserve-name">Their Stories</h3>
+                    <p class="preserve-desc">The tales they told, the wisdom they shared, the moments that defined them — captured in text, video, and audio.</p>
                 </div>
                 <div class="preserve-card">
                     <div class="preserve-icon">🎙️</div>
-                    <h3 class="preserve-title">Their Voice</h3>
-                    <p class="preserve-text">With existing recordings, we can preserve their actual voice — so grandchildren not yet born can hear them tell their own story.</p>
+                    <h3 class="preserve-name">Their Voice</h3>
+                    <p class="preserve-desc">With existing recordings, we can preserve their actual voice — so grandchildren not yet born can hear them tell their own story.</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- How It Works -->
-    <section>
+    
+    <section class="section howit-section">
+        <div class="geo-circle c1"></div>
+        <div class="geo-square s1"></div>
+        
         <div class="container">
-            <p class="section-label">How It Works</p>
-            <h2 class="section-title">Simple. Meaningful. Permanent.</h2>
-            <p class="section-subtitle">Creating a memorial vault takes minutes. The legacy lasts forever.</p>
-
-            <div class="steps-grid">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Create the Vault</h3>
-                    <p class="step-text">Name the memorial. Add basic information about your loved one.</p>
+            <div class="section-header">
+                <p class="section-label">How It Works</p>
+                <h2 class="section-title">Simple. Meaningful. Permanent.</h2>
+                <p class="section-subtitle">Creating a memorial vault takes minutes. The legacy lasts forever.</p>
+            </div>
+            
+            <div class="howit-grid">
+                <div class="howit-step">
+                    <div class="howit-number">1</div>
+                    <h4 class="howit-title">Create the Vault</h4>
+                    <p class="howit-desc">Name the memorial. Add basic information about your loved one.</p>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">Add Heirlooms</h3>
-                    <p class="step-text">Upload photos of meaningful objects. Tell the story behind each one.</p>
+                <div class="howit-step">
+                    <div class="howit-number">2</div>
+                    <h4 class="howit-title">Add Heirlooms</h4>
+                    <p class="howit-desc">Upload photos of meaningful objects. Tell the story behind each one.</p>
                 </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Invite Family</h3>
-                    <p class="step-text">Everyone can contribute memories. The vault grows with shared stories.</p>
+                <div class="howit-step">
+                    <div class="howit-number">3</div>
+                    <h4 class="howit-title">Invite Family</h4>
+                    <p class="howit-desc">Everyone can contribute memories. The vault grows with shared stories.</p>
                 </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3 class="step-title">Preserve Forever</h3>
-                    <p class="step-text">Blockchain-secured. Accessible to generations. Their legacy, protected.</p>
+                <div class="howit-step">
+                    <div class="howit-number">4</div>
+                    <h4 class="howit-title">Preserve Forever</h4>
+                    <p class="howit-desc">Blockchain-secured. Accessible to generations. Their legacy, protected.</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Packages -->
-    <section class="packages-section" id="packages">
+    
+    <section class="section packages-section" id="packages">
         <div class="container">
-            <p class="section-label">Memorial Packages</p>
-            <h2 class="section-title">Choose How to Honor Them</h2>
-            <p class="section-subtitle">One-time purchase. Lifetime preservation. No subscriptions.</p>
-
+            <div class="section-header">
+                <p class="section-label">Memorial Packages</p>
+                <h2 class="section-title">Choose How to Honor Them</h2>
+                <p class="section-subtitle">One-time purchase. Lifetime preservation. No subscriptions.</p>
+            </div>
+            
             <div class="packages-grid">
-                <div class="package">
+                <div class="package-card">
                     <h3 class="package-name">Remembrance</h3>
                     <p class="package-desc">A beautiful digital memorial</p>
                     <div class="package-price">$199</div>
-                    <p class="package-price-note">one-time</p>
+                    <div class="package-period">one-time</div>
                     <ul class="package-features">
                         <li>Digital memorial vault</li>
                         <li>Up to 5 heirlooms</li>
@@ -800,15 +887,15 @@
                         <li>Shareable memorial link</li>
                         <li>Family can add memories</li>
                     </ul>
-                    <button class="package-cta secondary">Get Started</button>
+                    <a href="#" class="package-btn">Get Started</a>
                 </div>
-
-                <div class="package featured">
-                    <div class="package-badge">Most Chosen</div>
+                
+                <div class="package-card featured">
+                    <span class="package-badge">Most Chosen</span>
                     <h3 class="package-name">Legacy</h3>
                     <p class="package-desc">A complete life story</p>
                     <div class="package-price">$499</div>
-                    <p class="package-price-note">one-time</p>
+                    <div class="package-period">one-time</div>
                     <ul class="package-features">
                         <li>Everything in Remembrance</li>
                         <li>Up to 25 heirlooms</li>
@@ -818,82 +905,79 @@
                         <li>QR memorial marker</li>
                         <li>Priority support</li>
                     </ul>
-                    <button class="package-cta primary">Get Started</button>
+                    <a href="#" class="package-btn">Get Started</a>
                 </div>
-
-                <div class="package">
+                
+                <div class="package-card">
                     <h3 class="package-name">Heritage</h3>
                     <p class="package-desc">The full legacy experience</p>
                     <div class="package-price">$1,499</div>
-                    <p class="package-price-note">one-time</p>
+                    <div class="package-period">one-time</div>
                     <ul class="package-features">
                         <li>Everything in Legacy</li>
                         <li>Unlimited heirlooms</li>
                         <li>Video documentary</li>
-                        <li>Voice of Memory (AI voice preservation)</li>
+                        <li>Voice of Memory (AI preservation)</li>
                         <li>Legacy letters (timed release)</li>
                         <li>Concierge support</li>
                         <li>Physical memorial book</li>
                     </ul>
-                    <button class="package-cta secondary">Contact Us</button>
+                    <a href="#" class="package-btn outline">Contact Us</a>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Features -->
-    <section class="features-section">
+    
+    <section class="section features-section" id="features">
+        <div class="geo-circle c1"></div>
+        <div class="geo-circle c2"></div>
+        
         <div class="container">
-            <p class="section-label">Special Features</p>
-            <h2 class="section-title">Beyond the Ordinary Memorial</h2>
-            <p class="section-subtitle">Tools designed to keep their presence alive.</p>
-
+            <div class="section-header">
+                <p class="section-label">Special Features</p>
+                <h2 class="section-title">Beyond the Ordinary Memorial</h2>
+                <p class="section-subtitle">Tools designed to keep their presence alive.</p>
+            </div>
+            
             <div class="features-grid">
-                <div class="feature">
+                <div class="feature-card">
                     <div class="feature-icon">🎙️</div>
-                    <div class="feature-content">
-                        <h3 class="feature-title">Voice of Memory</h3>
-                        <p class="feature-text">Using existing recordings — voicemails, videos, interviews — we can preserve their actual voice. Future generations won't just read their words; they'll hear them.</p>
-                    </div>
+                    <h4 class="feature-name">Voice of Memory</h4>
+                    <p class="feature-desc">Using existing recordings — voicemails, videos, interviews — we can preserve their actual voice. Future generations won't just read their words; they'll hear them.</p>
                 </div>
-                <div class="feature">
+                <div class="feature-card">
                     <div class="feature-icon">📱</div>
-                    <div class="feature-content">
-                        <h3 class="feature-title">QR Memorial Marker</h3>
-                        <p class="feature-text">A physical marker for headstones, urns, or memorial benches. Visitors scan the code and instantly access the full memorial vault.</p>
-                    </div>
+                    <h4 class="feature-name">QR Memorial Marker</h4>
+                    <p class="feature-desc">A physical marker for headstones, urns, or memorial benches. Visitors scan the code and instantly access the full memorial vault.</p>
                 </div>
-                <div class="feature">
+                <div class="feature-card">
                     <div class="feature-icon">✉️</div>
-                    <div class="feature-content">
-                        <h3 class="feature-title">Legacy Letters</h3>
-                        <p class="feature-text">Pre-written messages released at milestones — graduations, weddings, births. A way for them to be present at moments they'll miss.</p>
-                    </div>
+                    <h4 class="feature-name">Legacy Letters</h4>
+                    <p class="feature-desc">Pre-written messages released at milestones — graduations, weddings, births. A way for them to be present at moments they'll miss.</p>
                 </div>
-                <div class="feature">
+                <div class="feature-card">
                     <div class="feature-icon">🔗</div>
-                    <div class="feature-content">
-                        <h3 class="feature-title">Blockchain Secured</h3>
-                        <p class="feature-text">Every memory, every photo, every heirloom — permanently recorded on the blockchain. Tamper-proof. Eternal. Their legacy protected by technology.</p>
-                    </div>
+                    <h4 class="feature-name">Blockchain Secured</h4>
+                    <p class="feature-desc">Every memory, every photo, every heirloom — permanently recorded on the blockchain. Tamper-proof. Eternal. Their legacy protected by technology.</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Quote -->
+    
     <section class="quote-section">
+        <div class="geo-circle c1"></div>
+        <div class="geo-circle c2"></div>
+        
         <div class="container">
             <p class="quote-text">"The ones we love never truly leave us. We just need a place to find them again."</p>
-            <p class="quote-author">— For the families we serve</p>
+            <p class="quote-attr">— For the families we serve</p>
         </div>
     </section>
-
-    <!-- Partners -->
-    <section class="partners-section">
+    
+    <section class="section partners-section">
         <div class="container">
-            <div class="partners-content">
-                <div class="partners-text">
+            <div class="partners-grid">
+                <div class="partners-content">
                     <h3>For Funeral Professionals</h3>
                     <p>Offer your families something beyond the service — a lasting digital memorial that grows with each generation.</p>
                     <p>NextHeir partners with funeral homes, hospices, and memorial services to provide meaningful legacy preservation as part of the end-of-life experience.</p>
@@ -903,30 +987,46 @@
                         <li>Revenue sharing partnership</li>
                         <li>Training and support included</li>
                     </ul>
-                    <a href="#" class="partners-cta">Partner With Us</a>
+                    <a href="#" class="btn-secondary">Partner With Us</a>
                 </div>
-                <div class="partners-visual">
-                    <div class="partners-visual-icon">🤝</div>
-                    <h4 class="partners-visual-title">Trusted by Families</h4>
-                    <p class="partners-visual-text">Join the funeral professionals who are helping families preserve what matters most.</p>
+                <div class="visual-frame">
+                    <div class="geo-corner tl"></div>
+                    <div class="geo-corner tr"></div>
+                    <div class="geo-corner bl"></div>
+                    <div class="geo-corner br"></div>
+                    <div class="partners-visual-card">
+                        <div class="partners-visual-icon">🤝</div>
+                        <p class="partners-visual-text">Trusted by families.<br>Partnered with professionals.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
+    
+    <section class="cta-section">
         <div class="container">
-            <div class="footer-logo">NextHeir Memorial</div>
-            <p class="footer-text">Preserving legacies. Honoring lives. Forever.</p>
+            <h2 class="cta-title">Honor Their Memory</h2>
+            <p class="cta-subtitle">Create a memorial that preserves not just objects, but the person behind them.</p>
+            <a href="#packages" class="btn-primary">Create a Memorial</a>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                NextHeir Memorial
+                <span>Preserving legacies. Honoring lives. Forever.</span>
+            </div>
             <div class="footer-links">
                 <a href="#">About</a>
-                <a href="#">Packages</a>
+                <a href="#packages">Packages</a>
                 <a href="#">For Professionals</a>
                 <a href="#">Contact</a>
                 <a href="#">Privacy</a>
             </div>
-            <p class="footer-bottom">© 2025 NextHeir by Element United. All rights reserved.</p>
+            <div class="footer-copy">
+                © 2025 NextHeir by Element United
+            </div>
         </div>
     </footer>
 </body>
